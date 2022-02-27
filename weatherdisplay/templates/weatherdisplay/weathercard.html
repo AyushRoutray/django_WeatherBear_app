@@ -1,0 +1,59 @@
+{% extends 'weatherdisplay/home.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}WeatherBear - {{city}}{% endblock %}</title>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Shizuru&display=swap');
+         p {
+            font-family: 'Alfa Slab One', cursive;
+            font-size: larger;
+            font-weight: lighter;
+            margin-left: 20px;
+        }
+        #pp {
+            font-family: 'Alfa Slab One', cursive;
+            font-size: larger;
+            font-weight: lighter;
+            margin-left: 20px;
+        }
+        #weath {
+            box-sizing: border-box;
+            background-color: #f8f9d2;
+            background-image: linear-gradient(315deg, #f8f9d2 0%, #e8dbfc 74%);
+            border-radius: 5px;
+            width: 360px;
+            margin-left: 645px;
+            margin-top: 100px;
+            opacity: 0.8;
+        }
+        #icon {
+            margin-left: 125px;
+            width: 100px;
+        }
+        #cimg {
+            margin-left: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div id="weath">
+        <p>City Name: {{city}}</p>
+        <p>Country Name: {{countryname}}</p>
+        <label for="cimg" id="pp">Country Flag:</label>
+        <p><img
+            src="https://flagcdn.com/w80/{{countryname}}.png"
+            srcset="https://flagcdn.com/w160/{{countryname}}.png 2x"
+            width="80"
+            id="cimg" alt=""></p>
+        <p>Temperature: {{temperature}}°C</p>
+        <p>Description: {{desc}}</p>
+        <img src="http://openweathermap.org/img/w/{{icon}}.png" alt="" id="icon">
+</div>
+</body>
+</html>
+{% endblock %}

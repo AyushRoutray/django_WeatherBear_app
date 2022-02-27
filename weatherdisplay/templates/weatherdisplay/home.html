@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}WeatherBear{% endblock %}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Shizuru&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=Alfa+Slab+One&family=Bebas+Neue&display=swap');
+
+        body {
+            background-image: url("{% static '/images/bg.jpg' %}");
+        }
+
+        #navb {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            height: 80px;
+            display: flex;
+        }
+
+        #wb {
+            color: aqua;
+            text-decoration: none;
+            margin-left: 10px;
+            font-size: larger;
+            font-weight: bolder;
+            font-family: 'Shizuru', cursive;
+            vertical-align: 20px;
+            animation-name: example1;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+        @keyframes example1 {
+            from {
+              
+            }
+            to {
+                filter: invert(1);
+            }
+        }
+
+        #wbimg {
+            width: 50px;
+            margin-left: 20px;
+            margin-top: 10px;
+            animation-name: example;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+        @keyframes example {
+            from {
+              
+            }
+            to {
+                filter: invert(1);
+            }
+        }
+
+        form {
+            margin-top: 150px;
+            height: 25px;
+        }
+
+        .inputs {
+            height: 50px;
+            width: 360px;
+            border-radius: 5px;
+            font-size: larger;
+            font-family: 'Alfa Slab One', cursive;
+            background-color: #f8f9d2;
+            background-image: linear-gradient(315deg, #f8f9d2 0%, #e8dbfc 74%);
+            font-weight: lighter;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        #butsub {
+            margin-top: 20px;
+            margin-left: 150px;
+            border-radius: 5px;
+            height: 40px;
+            font-family: 'Alfa Slab One', cursive;
+            font-size: larger;
+            font-weight: lighter;
+            background-color: #f8f9d2;
+            background-image: linear-gradient(315deg, #f8f9d2 0%, #e8dbfc 74%);
+            opacity: 0.8;
+        }
+
+        p {
+            font-family: 'Alfa Slab One', cursive;
+            font-size: larger;
+            font-weight: lighter;
+            margin-left: 20px;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            text-decoration: none;
+            color: aqua;
+            right: 20px;
+            font-size: larger;
+            font-weight: bolder;
+            font-family: 'Shizuru', cursive;
+            animation-name: example2;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+        @keyframes example2 {
+            from {
+              
+            }
+            to {
+                filter: invert(1);
+            }
+        }
+
+        #cont {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navb">
+        <nav>
+            <img src="{% static '\images\bearlogo.png' %}" id="wbimg">
+            <a href="" id="wb">WeatherBear</a>
+        </nav>
+    </div>
+    <div id="cont">
+        <form method="POST">
+            {% csrf_token %}
+            <select name="city" class="inputs" required autofocus>
+                <option value="">--Enter your City here--</option>
+                <option>Abidjan</option>
+                <option>Adelaide</option>
+                <option>Amritsar</option>
+                <option>Baghdad</option>
+                <option>Bangkok</option>
+                <option>Bangalore</option>
+                <option>Barcelona</option>
+                <option>Beijing</option>
+                <option>Beirut</option>
+                <option>Berlin</option>
+                <option>Birmingham</option>
+                <option>Brisbane</option>
+                <option>Busan</option>
+                <option>Capetown</option>
+                <option>Chicago</option>
+                <option>Delhi</option>
+                <option>Dhaka</option>
+                <option>Guangzhou</option>
+                <option>Hamburg</option>
+                <option>Hanoi</option>
+                <option>HongKong</option>
+                <option>Hyderabad</option>
+                <option>Istanbul</option>
+                <option>Jakarta</option>
+                <option>Jeddah</option>
+                <option>Johannesburg</option>
+                <option>Karachi</option>
+                <option>Kiev</option>
+                <option>Kobe</option>
+                <option>Lagos</option>
+                <option>LosAngeles</option>
+                <option>Madrid</option>
+                <option>Melbourne</option>
+                <option>Mumbai</option>
+                <option>Montreal</option>
+                <option>Moscow</option>
+                <option>Osaka</option>
+                <option>Paris</option>
+                <option>Perth</option>
+                <option>Prague</option>
+                <option>Pyongyang</option>
+                <option>Rome</option>
+                <option>San Diego</option>
+                <option>Seoul</option>
+                <option>Shanghai</option>
+                <option>Singapore</option>
+                <option>Stockholm</option>
+                <option>Sydney</option>
+                <option>Taipei</option>
+                <option>Tehran</option>
+                <option>Vienna</option>
+                <option>Warsaw</option>
+                <option>Yokohama</option>
+            </select>
+            <br>
+            <button type="submit" id="butsub">Submit</button>
+            <br>
+        </form>
+    </div>
+    {% block content %}
+
+    {% endblock %}
+    <p class="footer">Powered by<a href="https://openweathermap.org/api" class="footer"
+            target="_blank">OpenWeatherApi</a></p>
+    </footer>
+</body>
+
+</html>
